@@ -4,6 +4,7 @@
  */
 package com.mycompany.grademanagementproject;
 import java.text.NumberFormat;
+import java.text.DecimalFormat;
 
 /**
  *
@@ -14,27 +15,27 @@ public class Assignment {
     private float correctPoints;
     private float percentCorrect;
     private String assignmentName;
+    final DecimalFormat fmt2 = new DecimalFormat("0.##");
     
     public Assignment(){
         totalPoints = 0;
         correctPoints = 0;
     }
     
-    public float calculateGrade(){
+    public String calculateGrade()
+    {
         percentCorrect = (correctPoints / totalPoints);
-        return percentCorrect;
-    }
-    
-    public String getGrade(){
         NumberFormat fmt = NumberFormat.getPercentInstance();
         return fmt.format(percentCorrect);
     }
     
-    public void setCorrectPoints(float points){
+    public void setCorrectPoints(float points)
+    {
         correctPoints = points;
     }
     
-    public void setTotalPoints(float points){
+    public void setTotalPoints(float points)
+    {
         totalPoints = points;
     }
     
@@ -48,13 +49,13 @@ public class Assignment {
         return assignmentName;
     }
     
-    public float getTotalPoints()
+    public String getTotalPoints()
     {
-        return totalPoints;
+        return fmt2.format(totalPoints);
     }
     
-    public float getCorrectPoints()
+    public String getCorrectPoints()
     {
-        return correctPoints;
+        return fmt2.format(correctPoints);
     }
 }
